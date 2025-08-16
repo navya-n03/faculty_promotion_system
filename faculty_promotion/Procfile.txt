@@ -1,2 +1,2 @@
 web:gunicorn
-faculty_promotion.wsgi
+faculty_promotion_system.wsgi
