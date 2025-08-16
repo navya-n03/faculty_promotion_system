@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Faculty Promotion System</title>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'faculty_login' %}">Login</a> |
+        <a href="{% url 'faculty_register' %}">Register</a> |
+        <a href="{% url 'faculty_dashboard' %}">Dashboard</a> |
+        <a href="{% url 'faculty_logout' %}">Logout</a>
+    </nav>
+    <hr>
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

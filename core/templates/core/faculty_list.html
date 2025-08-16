@@ -1,0 +1,34 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+  <h2>Faculty List</h2>
+
+  <table border="1">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Department</th>
+      <th>Current Rank</th>
+      <th>Years of Experience</th>
+      <th>Publications</th>
+      <th>Conferences</th>
+      <th>Books</th>
+      <th>PhD Status</th>
+      <th>Admin Roles</th>
+      <th>API Score</th>
+      <th>Promotion Status</th>
+    </tr>
+    {% for faculty in faculties %}
+      <tr>
+        <td>{{ faculty.user.username }}</td>
+        <td>{{ faculty.user.email }}</td>
+        <td>{{ faculty.department }}</td>
+        <td>{{ faculty.current_rank }}</td>
+        <td>{{ faculty.years_of_experience }}</td>
+        <td>{{ faculty.publications }}</td>
+        <td>{{ faculty.conferences_attended }}</td>
+        <td>{{ faculty.books_published }}</td>
+        <td>{{ faculty.phd_status }}</td>
+        <td>{{ faculty.admin_roles }}</td>
+        <td>{{ faculty.api_score }}</td>
+        <td>{{ faculty.promotion_status }}</td>

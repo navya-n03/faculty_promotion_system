@@ -1,0 +1,87 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<style>
+    body {
+        background-color: #f4f9ff;
+        font-family: Arial, sans-serif;
+    }
+    h2 {
+        color: #2c3e50;
+        text-align: center;
+        background: linear-gradient(to right, #4facfe, #00f2fe);
+        padding: 10px;
+        border-radius: 8px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background: white;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    th {
+        background-color: #4cafef;
+        color: white;
+        padding: 10px;
+        text-align: left;
+    }
+    td {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+    tr:hover {
+        background-color: #f1faff;
+    }
+    a {
+        color: #1e88e5;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    a:hover {
+        color: #0d47a1;
+    }
+</style>
+
+<h2>Admin Dashboard</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>Rank</th>
+            <th>Experience</th>
+            <th>Publications</th>
+            <th>Conferences</th>
+            <th>Books</th>
+            <th>PhD</th>
+            <th>API Score</th>
+            <th>Promotion Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for faculty in faculties %}
+        <tr>
+            <td>{{ faculty.user.username }}</td>
+            <td>{{ faculty.user.email }}</td>
+            <td>{{ faculty.department }}</td>
+            <td>{{ faculty.current_rank }}</td>
+            <td>{{ faculty.years_of_experience }}</td>
+            <td>{{ faculty.publications }}</td>
+            <td>{{ faculty.conferences_attended }}</td>
+            <td>{{ faculty.books_published }}</td>
+            <td>{{ faculty.phd_completed|yesno:"Yes,No" }}</td>
+            <td>{{ faculty.api_score }}</td>
+            <td>{{ faculty.promotion_status }}</td>
+            <td>
+                <a href="{% url 'update_promotion_status' faculty.id %}">Promote / Update</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<style>
+  body {
+    background: linear-gradient(135deg, #74ABE2, #5563DE);
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+    padding-top: 50px;
+  }
+
+  h2 {
+    color: #fff;
+    margin-bottom: 20px;
+  }
+
+  form {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    text-align: left;
+    backdrop-filter: blur(5px);
+  }
+
+  label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+  }
+
+  button {
+    margin-top: 15px;
+    background-color: #ff9800;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  button:hover {
+    background-color: #e68900;
+  }
+
+  a {
+    color: #ffdd57;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  ul {
+    margin-top: 15px;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  li {
+    background: rgba(255, 0, 0, 0.2);
+    padding: 8px;
+    border-radius: 5px;
+    margin-top: 5px;
+  }
+</style>
+
+<h2>Faculty Login</h2>
+
+<form method="POST">
+  {% csrf_token %}
+  <label for="username">Username or Email:</label>
+  <input type="text" name="username" required>
+
+  <label for="password">Password:</label>
+  <input type="password" name="password" required>
+
+  <button type="submit">Login</button>
+</form>
+
+{% if messages %}
+  <ul>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+<p>Don't have an account? <a href="{% url 'faculty_register' %}">Register here</a></p>
+{% endblock %}
